@@ -1,13 +1,45 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Deu Certo</ion-title>
+    <ion-row>
+      <div class="back" (click)="voltar()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+        <p>Voltar</p>
+      </div>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">deu serto</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <img alt="Cidade" src="../../assets/paisagem.jpg" />
+    <ion-card-header>
+      <ion-card-title
+        >{{endereco.endereco}} - {{endereco.estado}}</ion-card-title
+      >
+      <ion-card-subtitle
+        >{{endereco.endereco}} {{endereco.numero}}</ion-card-subtitle
+      >
+    </ion-card-header>
+    <ion-card-content>
+      {{endereco.cep}}
+      <br />
+      {{endereco.complemento}}
+      <br />
+      <ion-row>
+        <ion-col seze="4"></ion-col>
+        <ion-col seze="3">
+          <ion-button size="small" color="primary" fill="outline">
+            <ion-icon name="create-outline"></ion-icon>
+            <ion-label style="margin-top: 0; margin-left: 6px;">Editar</ion-label>
+          </ion-button>
+        </ion-col>
+        <ion-col seze="3">
+          <ion-button size="small" color="danger" >
+          <ion-icon name="trash-outline"></ion-icon>
+          <ion-label style="margin-top: 0; margin-left: 6px;">Excluir</ion-label>
+        </ion-button>
+      </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
