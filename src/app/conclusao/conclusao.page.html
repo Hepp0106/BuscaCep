@@ -10,22 +10,22 @@
 </ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <div>
+  <div *ngFor="let end of enderecos">
     <ion-card>
-      <img alt="Cidade" src="../../assets/paisagem.jpg" />
+      <img alt="Cidade" src="../../assets/download.jpg" style="width: 100%;"/>
       <ion-card-header>
         <ion-card-title
-          >{{endereco.cidade}} - {{endereco.estado}}</ion-card-title
+          >{{end.city}} - {{end.uf}}</ion-card-title
         >
         <ion-card-subtitle
-          >{{endereco.endereco}} {{endereco.numero}} -
-          {{endereco.bairro}}</ion-card-subtitle
+          >{{end.rua}} {{end.nmr}} -
+          {{end.bairro}}</ion-card-subtitle
         >
       </ion-card-header>
       <ion-card-content>
-        {{endereco.cep}}
+        {{end.cep}}
         <br />
-        {{endereco.complemento}}
+        {{end.comp}}
         <br />
         <ion-row>
           <ion-col size="8"></ion-col>
@@ -36,7 +36,7 @@
           </ion-button>
         </ion-col> -->
           <ion-col size="4">
-            <ion-button size="small" color="danger">
+            <ion-button size="small" color="danger" (click)="deletar(end.cep)">
               <ion-icon name="trash-outline"></ion-icon>
               <ion-label style="margin-top: 0; margin-left: 6px"
                 >Excluir</ion-label
@@ -48,7 +48,7 @@
     </ion-card>
   </div>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end" style="margin: 1rem">
-    <ion-fab-button (click)="voltar()" color="dark">
+    <ion-fab-button (click)="novo()" color="dark">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

@@ -34,14 +34,10 @@ export class ConclusaoPage implements OnInit {
   async voltar() {
     const voltando = await this.alerta.create({
       header: 'ATENÇÃO!',
-      message: 'Deseja um novo endereco',
+      message: 'Nenhum endereço encontardo, cadastre um novo!',
       buttons: [
         {
-          text: 'Não',
-          role: 'cancel',
-        },
-        {
-          text: 'Sim',
+          text: 'OK',
           handler: () => {
             localStorage.clear();
 
@@ -53,13 +49,24 @@ export class ConclusaoPage implements OnInit {
     await voltando.present();
   }
 
-  editar() {
+  novo() {
     this.nav.navigateForward('/');
   }
 
+ 
+
   carregaDados() {
-    if(this.servicos.listar()){
+    if (this.servicos.listar()) {
       this.enderecos = this.servicos.listar()!;
+      console.log(this.enderecos);
+      if (this.enderecos.length == 0) {
+        this.voltar();
+      }
     }
+  }
+
+  deletar(cep: string) {
+    this.servicos.deletar(cep);
+    this.carregaDados();
   }
 }
